@@ -15,7 +15,7 @@ drop.get("/") { request in
     let footer = CommonHandler().getFooter()
     let pageContent = IndexHandler().loadPageContent()
     let fullPage = header + footer + pageContent
-
+    
     return Response(status: .ok, body: fullPage)
 }
 
@@ -24,17 +24,17 @@ drop.get("blog") { request in
     let footer = CommonHandler().getFooter()
     let pageContent = BlogHandler().loadPageContent()
     let fullPage = header + footer + pageContent
-
+    
     return Response(status: .ok, body: fullPage)
 }
 
 drop.get("json") { request in
-
-    return try JSON(JSONCreator().generateJSON())
+    
+    return try JSON(node: JSONCreator().generateJSON())
 }
 
-let port = drop.config["app", "port", "host"].int ?? 80
+let port = drop.config["app", "port", "host"]?.int ?? 80
 
 // Print what link to visit for default port
 print("Visit http://localhost:\(port)")
-drop.serve()
+drop.run()
