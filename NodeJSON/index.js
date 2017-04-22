@@ -1,3 +1,0 @@
-// Startpoint
-
-require('./app/index')  
