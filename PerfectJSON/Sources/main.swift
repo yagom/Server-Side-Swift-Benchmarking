@@ -21,6 +21,7 @@ import PerfectLib
 import PerfectHTTPServer
 
 #if os(Linux)
+import Glibc
 public func arc4random_uniform(_ max: UInt32) -> Int {
     return Int(random() % Int(max + 1))
 }
